@@ -437,12 +437,17 @@
 
 .search-view .view-item {
   position: relative;
-  height: 50px;
+  height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 16px;
   padding-inline: 16px 24px;
+}
+
+.search-view .view-item:first-child {
+  margin-top: -20px;
+
 }
 
 .search-view .view-item :is(.m-icon, .item-subtitle) {
@@ -453,6 +458,8 @@
   position: absolute;
   inset: 0;
   box-shadow: none;
+  
+  padding: 20px;
 }
 
 
@@ -701,7 +708,7 @@ article.container::before {
   width: 100%;
   height: 100%;
   background-color: var(--background);
-  /* display: grid; */
+  display: grid;
   place-items: center;
   z-index: 1;
   display: none;

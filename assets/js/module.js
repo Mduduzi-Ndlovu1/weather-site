@@ -69,12 +69,13 @@ export const getTime = function(timeUnix, timezone) {
      * @param {number} timeUnix Timezone shift from UTC in seconds
      * @returns {string} Time String. formate: "HH AM/PM"
      */
+
 export const getHours = function(timeUnix, timezone) {
     const date = new Date((timeUnix + timezone) * 1000);
     const hours = date.getUTCHours()
     const period = hours >= 12 ? "PM" : "AM";
 
-    return `${hours % 12 || 12}:${period}`;
+    return `${hours % 12 || 12} ${period}`;
 
 }
 /**
@@ -86,7 +87,7 @@ export const getHours = function(timeUnix, timezone) {
      */
 export const mps_to_kmh = mps => {
     const mph = mps * 3600;
-    return mph / 1000
+    return mph / 1000;
 }
 
 export const aqiText = {
