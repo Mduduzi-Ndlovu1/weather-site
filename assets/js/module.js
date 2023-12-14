@@ -31,64 +31,55 @@ export const monthNames = [
     "Nov",
     "Dec"
 ];
+
 /**
-     * 
-     * 
-     * @param {number} dateUnix Unix date in seconds
-     * @param {number} timezone Timezone Shift from UTC in seconds
-     * @returns {string} Date String. Fomate: "Sunday 10, Jan"
-     */
-export const getDate = function(dateUnix, timezone) {
-    const date = new Date((dateUnix + timezone)* 1000);
-    const weekDayName  = weekDayNames[date.getUTCDay()];
+ * @param {number} dateUnix Unix date in seconds
+ * @param {number} timezone Timezone Shift from UTC in seconds
+ * @returns {string} Date String. Format: "Sunday 10, Jan"
+ */
+export const getDate = function (dateUnix, timezone) {
+    const date = new Date((dateUnix + timezone) * 1000);
+    const weekDayName = weekDayNames[date.getUTCDay()];
     const monthName = monthNames[date.getUTCMonth()];
 
-    return `${weekDayName} ${date.getUTCDate()}, ${monthName}}`;
-}
+    return `${weekDayName} ${date.getUTCDate()}, ${monthName}`;
+};
+
 /**
-     * 
-     * 
-     * @param {number} timeUnix Unix date in seconds
-     * @param {number} timeUnix Timezone shift from UTC in seconds
-     * @returns {string} Time String. formate: "HH:MM AM/PM"
-     */
-export const getTime = function(timeUnix, timezone) {
+ * @param {number} timeUnix Unix date in seconds
+ * @param {number} timezone Timezone shift from UTC in seconds
+ * @returns {string} Time String. format: "HH:MM AM/PM"
+ */
+export const getTime = function (timeUnix, timezone) {
     const date = new Date((timeUnix + timezone) * 1000);
     const hours = date.getUTCHours();
-    const mintues = date.getUTCMinutes();
+    const minutes = date.getUTCMinutes();
     const period = hours >= 12 ? "PM" : "AM";
 
-    return `${hours % 12 || 12}:${mintues} ${period}`;
-
-}
+    return `${hours % 12 || 12}:${String(minutes).padStart(2, '0')} ${period}`;
+};
 
 /**
-     * 
-     * 
-     * @param {number} timeUnix Unix date in seconds
-     * @param {number} timeUnix Timezone shift from UTC in seconds
-     * @returns {string} Time String. formate: "HH AM/PM"
-     */
-
-export const getHours = function(timeUnix, timezone) {
+ * @param {number} timeUnix Unix date in seconds
+ * @param {number} timezone Timezone shift from UTC in seconds
+ * @returns {string} Time String. format: "HH AM/PM"
+ */
+export const getHours = function (timeUnix, timezone) {
     const date = new Date((timeUnix + timezone) * 1000);
-    const hours = date.getUTCHours()
+    const hours = date.getUTCHours();
     const period = hours >= 12 ? "PM" : "AM";
 
     return `${hours % 12 || 12} ${period}`;
+};
 
-}
 /**
-     * 
-     * 
-     * @param {number} mps Metter per seconds
-     * @param {number} Kilometer per hour 
-     * @returns {string} Time String. formate: "HH AM/PM"
-     */
+ * @param {number} mps Meter per second
+ * @returns {number} Kilometer per hour
+ */
 export const mps_to_kmh = mps => {
-    const mph = mps * 3600;
-    return mph / 1000;
-}
+    const kmh = mps * 3.6;
+    return kmh;
+};
 
 export const aqiText = {
     1: {
@@ -97,7 +88,7 @@ export const aqiText = {
     },
     2: {
         level: "Fair",
-        message: "Air quality is considered acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusally sensitive to air pollution"
+        message: "Air quality is considered acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution"
     },
     3: {
         level: "Moderate",
@@ -111,5 +102,6 @@ export const aqiText = {
         level: "Very Poor",
         message: "Health warnings of emergency conditions. The entire population is more likely to be affected"
     },
-}
+};
+
 
